@@ -1,0 +1,723 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<style>
+    /* Custom styling for the PaCo brand */
+        .paco-brand {
+            font-size: 48px; 
+            color: firebrick;
+            font-family: 'Comic Sans MS', cursive;
+            font-weight: bold;
+        }
+        
+        .navbar-nav {
+            color: white;
+        }
+        .navbar-nav .nav-link {
+        position: relative;
+        }
+
+.navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Adjust the distance of the bubble from the text */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px; /* Adjust the width of the bubble */
+    height: 30px; /* Adjust the height of the bubble */
+    background-color: transparent; /* Initial background color (transparent) */
+    border-radius: 50%;
+    z-index: -1;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+        .navbar {
+            background-color: black;
+        }
+        /* Style for the active navigation link */
+        .nav-item.active a {
+            border-radius: 15px; /* Adjust the border-radius as needed */
+            background-color: rgb(109, 35, 109);
+            color: white !important; /* Override Bootstrap's default link color */
+            padding: 5px 10px; /* Adjust padding as needed */
+        }
+        .navbar-nav .nav-link:hover {
+            position: relative;
+            color: white; /* Change the text color on hover if needed */
+        }
+
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: url('stars.jpg') center/cover;/* Set the starry background */
+            
+            color: #fff;
+            margin: 0;
+            padding: 75;
+        }
+
+        
+        
+
+        #skills {
+            padding: 2px;
+        }
+
+        .skill {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #projects {
+            padding: 2px;
+        }
+
+        .project {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .project-details{
+            padding-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .color-box {
+        width: 20px; /* Adjust the width as needed */
+        height: 20px; /* Adjust the height as needed */
+        margin-right: 10px; /* Add margin between the color box and skill name */
+        display: inline-block;
+        }
+        /* Custom styling for the accordion down arrow */
+        .accordion-button::after {
+            /*content: '\2228';/* /* Unicode character for right arrow (▸) */
+            float: right; /* Align the arrow to the right */
+            margin-left: 5px; /* Adjust the margin as needed */
+        }
+
+        /* Additional styling for the accordion button */
+        .accordion-button {
+            text-align: left; /* Ensure the text is left-aligned */
+            background-color: black; /* Set the background color to black */
+            color: white; /* Set the text color to white or any other contrasting color */
+        }
+
+        /* Custom styling for the project title and colored box */
+        .project-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #skillsAccordion .accordion-item,
+        #projectAccordion .accordion-item {
+            background-color: black; /* Set the background color to black */
+            color: white; /* Set the text color to white or any other contrasting color */
+        }
+        
+        
+        /* Add your own styling for colored skills and indicators */
+        .python { background-color: #3572A5; color: white; }
+        .r { background-color: yellowgreen; color: white; }
+        .git {background-color: blueviolet; color: white}
+        .machinelearning {background-color: orange; color: white}
+        .bayes {background-color: red; color: white}
+        .sql {background-color:aquamarine; color:white}
+        /* Add more styles for other skills as needed */
+
+  
+        .popover-content {
+        max-width: 300px; /* Adjust the max-width as needed */
+    }
+    button {
+    /* Add your styling here */
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+    
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand paco-brand" >PRC</a>
+            <div class="nav justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="biography.html">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="education.html">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resume.html">Resume</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" aria-current="page" href="portfolio.html">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.linkedin.com/in/patrick-costa-323842195/">LinkedIn</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+          <div class="container-fluid mt-5">
+            <div class="container-fluid mt-5">
+                <div class="row">
+                    <div class="col-md-4" id="skills">
+                        <h2>Skills</h2>
+                        <div class="accordion accordion-flush" id="skillsAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="pythonHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pythonCollapse" aria-expanded="false" aria-controls="pythonCollapse">
+                                        <div class="color-box python"></div>Python
+                                    </button>
+                                </h2>
+                                <div id="pythonCollapse" class="accordion-collapse collapse" aria-labelledby="pythonHeader" data-bs-parent="#skillsAccordion">
+                                    <div class="accordion-body">
+                                        <!-- Add details for Python here -->
+                                        <ul>
+                                            <li>Pandas</li>
+                                            <li>Astropy</li>
+                                            <li>numpy</li>
+                                            <li>matplotlib</li>
+                                            <li>emcee</li>
+                                            <li>scipy</li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Add more accordion items for other skills -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="rHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rCollapse" aria-expanded="false" aria-controls="rCollapse">
+                                        <div class="color-box r"></div>R
+                                    </button>
+                                </h2>
+                                <div id="rCollapse" class="accordion-collapse collapse" aria-labelledby="rHeader" data-bs-parent="#skillsAccordion">
+                                    <div class="accordion-body">
+                                        
+                                        <ul>
+                                            <li>ggplot2</li>
+                                            <li>MASS</li>
+                                            <li>dplyr</li>
+                                            <li>httr2</li>
+                                            <li>rvest</li>
+                                            <li>loo</li>
+                                            <li>brms</li>
+                                            <li>nortest</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="gitHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gitCollapse" aria-expanded="false" aria-controls="gitCollapse">
+                                        <div class="color-box git"></div>Git
+                                    </button>
+                                </h2>
+                                <div id="gitCollapse" class="accordion-collapse collapse" aria-labelledby="gitHeader" data-bs-parent="#skillsAccordion">
+                                    <div class="accordion-body">
+                                        
+                                        <ul>
+                                            <li>Cloning</li>
+                                            <li>Committing Locally</li>
+                                            <li>Pushing</li>
+                                            <li>Pull requests</li>
+                                            <li>Re-basing</li>
+                    
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="bayesHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bayesCollapse" aria-expanded="false" aria-controls="bayesCollapse">
+                                        <div class="color-box bayes"></div>Bayesian Inference
+                                    </button>
+                                </h2>
+                                <div id="bayesCollapse" class="accordion-collapse collapse" aria-labelledby="bayesHeader" data-bs-parent="#skillsAccordion">
+                                    <div class="accordion-body">
+                                        <!-- Add details for Python here -->
+                                        <ul>
+                                            <li>Linear/Non-linear Regression</li>
+                                            <li>Monte Carlo Methods (MCMC)</li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="sqlHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sqlCollapse" aria-expanded="false" aria-controls="sqlCollapse">
+                                        <div class="color-box sql"></div>SQL
+                                    </button>
+                                </h2>
+                                <div id="sqlCollapse" class="accordion-collapse collapse" aria-labelledby="sqlHeader" data-bs-parent="#skillsAccordion">
+                                    <div class="accordion-body">
+                                        <!-- Add details for Python here -->
+                                        <ul>
+                                            <li>Querying large databases such as SIMBAD</li>
+                                            <li>Data preparation</li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <!-- Add more skills with different classes -->
+                    </div>
+        
+    
+                    <div class="col-md-8" id="projects">
+                        <h2>Experience</h2>
+                        <div class="accordion accordion-flush" id="projectAccordion">
+                    
+                            <!-- Exomoons -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="project1Header">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#project1Collapse" aria-expanded="true" aria-controls="project1Collapse">
+                                                Exomoon Transits
+                                            </button>
+                                        </div>
+                                        <div class="col-3 d-flex justify-content-end align-items-center">
+                                            <div class="color-box python"></div>
+                                            <div class="color-box git"></div>
+                                            <div class="color-box bayes"></div>
+                                        </div>
+                                    </div>
+                                </h3>
+                                <div id="project1Collapse" class="accordion-collapse collapse" aria-labelledby="project1Header" data-bs-parent="#projectAccordion">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>Used Python and Git to update existing code.</li>
+                                            <li>Used knowledge of orbital mechanics and differential equations to model exomoon transits.</li>
+                                            <li>Used machine learning methods to investigate the uncertainties in orbital parameters.</li>
+                                        </ul>
+                                        <ul class="list-unstyled d-flex">
+                                            <li class="me-3">
+                                                <button type="button" class="btn btn-secondary python"  data-bs-toggle="popover" data-bs-original-title="Implementation" data-bs-content="numpy, emcee">Python</button>
+                                            </li>
+                                            <li class="me-3">
+                                                <button type="button" class="btn btn-secondary git"  data-bs-toggle="popover" data-bs-original-title="Implementation" data-bs-content="forking, pushing, pull requests">git</button>
+                                            </li>
+                                            <li class="me-3">
+                                                <button type="button" class="btn btn-secondary bayes"  data-bs-toggle="popover" data-bs-original-title="Implementation" data-bs-content="MCMC">Bayesian Inference</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- M3 -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="project2Header">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#project2Collapse" aria-expanded="true" aria-controls="project2Collapse">
+                                                Imaging Globular Cluster M3
+                                            </button>
+                                        </div>
+                                        <div class="col-3 d-flex justify-content-end align-items-center">
+                                            <div class="color-box python"></div>
+                                        </div>
+                                    </div>
+                                </h3>
+                                <div id="project2Collapse" class="accordion-collapse collapse" aria-labelledby="project2Header" data-bs-parent="#projectAccordion">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>Remotely connected to the Apache Point Observatory FlareCam telescope</li>
+                                            <li>Used knowledge of orbital dynamics and differential equations to model exomoon transits.</li>
+                                            <li>Used machine learning methods to investigate the uncertainties in orbital parameters.</li>
+                                        </ul>
+                                        <ul class="list-unstyled d-flex">
+                                            <li class="me-3">
+                                                <button type="button" class="btn btn-secondary python"  data-bs-toggle="popover" data-bs-original-title="Implementation" data-bs-placement="bottom" data-bs-content="numpy, pandas, astropy">Python</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cosmological Model -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="project3Header">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#project3Collapse" aria-expanded="true" aria-controls="project3Collapse">
+                                                Modelling the Universe
+                                            </button>
+                                        </div>
+                                        <div class="col-3 d-flex justify-content-end align-items-center">
+                                            
+                                            <div class="color-box python"></div>
+                                            <div class="color-box bayes"></div>
+                                            
+                                        </div>
+                                    </div>
+                                </h3>
+                                <div id="project3Collapse" class="accordion-collapse collapse" aria-labelledby="project3Header" data-bs-parent="#projectAccordion">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>Used supernovae data to develop a cosmological model for a hypothetical universe.</li>
+                                            <li>Used machine learning methods to tune parameters and determine the composition of a universe.</li>
+                                            <li>Applied knowledge of statistical analysis to evaluate the model's goodness of fit.</li>
+                                        </ul>
+                                        <ul class="list-unstyled d-flex">
+                                            <li class="me-3">
+                                                <button type="button" class="btn btn-secondary python"  data-bs-toggle="popover" data-bs-original-title="Implementation" data-bs-placement="bottom" data-bs-content="numpy, emcee, astropy">Python</button>
+                                            </li>
+                                            <li class="me-3">
+                                                <button type="button" class="btn btn-secondary bayes"  data-bs-toggle="popover" data-bs-original-title="Implementation" data-bs-placement="bottom" data-bs-content="Markov Chain Monte Carlo">Bayesian inference</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Stellar rotation -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="project4Header">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#project4Collapse" aria-expanded="true" aria-controls="project4Collapse">
+                                                Identifying Stellar Rotation
+                                            </button>
+                                        </div>
+                                        <div class="col-3 d-flex justify-content-end align-items-center">
+                                            
+                                            <div class="color-box python"></div>
+                                            
+                                        </div>
+                                    </div>
+                                </h3>
+                                <div id="project4Collapse" class="accordion-collapse collapse" aria-labelledby="project4Header" data-bs-parent="#projectAccordion">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>Analyzed light curves from the Kepler K2 mission to determine stellar rotators.</li>
+                                            <li>Used Python to determine which data points were good predictors of stellar rotatation.</li>
+                                            <li>Presented findings to the University of Washington Astronomy Department in a ten-minute presentation.</li>
+                                        </ul>
+                                        <ul class="list-unstyled d-flex">
+                                            <li class="me-3">
+                                                <button type="button" class="btn btn-secondary python"  data-bs-toggle="popover" data-bs-original-title="Implementation" data-bs-placement="bottom" data-bs-content="numpy, astropy">Python</button>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Hockey Data -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="project5Header">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#project5Collapse" aria-expanded="true" aria-controls="project5Collapse">
+                                                Analyzing Advanced Hockey Statistics
+                                            </button>
+                                        </div>
+                                        <div class="col-3 d-flex justify-content-end align-items-center">
+                                            
+                                            <div class="color-box r"></div>
+                                            <div class="color-box bayes"></div>
+
+                                            
+                                        </div>
+                                    </div>
+                                </h3>
+                                <div id="project5Collapse" class="accordion-collapse collapse" aria-labelledby="project5Header" data-bs-parent="#projectAccordion">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>Used R to visualize the performance of professional hockey players throughout their careers.</li>
+                                            <li>Used Bayesian inference and machine learning libraries to develop predictive models.</li>
+                                            <li>Explored various goodness-of-fit assessment methods to better understand them as well as to determine the quality of the models.</li>
+                                        </ul>
+                                        <ul class="list-unstyled d-flex">
+                                            <li class="me-3">
+                                                <button type="button" class="btn btn-secondary r"  data-bs-toggle="popover" data-bs-original-title="Implementation" data-bs-placement="bottom" data-bs-content="ggplot2, brms">R</button>
+                                            </li>
+                                            <li class="me-3">
+                                                <button type="button" class="btn btn-secondary bayes"  data-bs-toggle="popover" data-bs-original-title="Implementation" data-bs-placement="bottom" data-bs-content="ggplot2, brms">Bayesian inference</button>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+            </div>
+        </div>
+
+
+
+        <section>
+        <div class = "row">
+            <div class="col-md-6">
+        <div id="project1Details" class="project-details">
+            <h3>Exomoon Transits</h3>
+            <p>
+                In Spring of 2022, I joined an exoplanet research group led by Professor Eric Agol at the University of Washington.
+                PhD candidate at the time, Tyler Gordon, was who I primarily worked with and from whom I received guidance. Let me first start by 
+                defining what an exomoon is for those not familiar: 
+                A moon that orbits a planet that orbits a star other than our Sun. They have never been detected, although candidates have arisen from 
+                time-to-time. 
+            </p>
+            <p>
+                Now, what's a transit?
+                When we say that an exomoon transits a star, we mean that the exoplanet-exomoon system crosses in front of the 
+                host star, blocking light from reaching us. If we measure flux (the amount of light per unit area) before, during, and after
+                the transit, we get what is called a light curve, shown to the right. The shape of the resulting light curves depends on the orbits and radii of the transitting bodies. 
+                Therefore, hypothetically, we can determine the orbits and radii given the light curve.  
+            </p>
+            <p>
+                Tyler created gefera, a Python package that computes two models:
+                The dynamical model which is used to compute the positions of two bodies at a given time or array of times, and the photometric 
+                model which computes the observed flux given the positions of the bodies. The goal of my project was to calculate the information matrix 
+                for the 18 parameters that define a transit model. 
+            </p>
+            <p>
+                First, I found that I had to reparameterize the model because the original parameters 
+                were too correlated. The original set of parameters and the new set can be found on the right. The conversion between the two can be done 
+                with fairly simple orbital mechanics. In order to calculate the information matrix, the derivatives of the light curve with respect to each 
+                parameter are needed. This was the part of the project that consumed much of my time. At first glance, it seemed like a simple chain rule problem, 
+                but unfortunately that was not the case. It ended up being a system of 18 equations that required manipulation to get the derivatives I wanted. 
+                To test the analytical expressions, I compared them to their respective finite differences. 
+            </p>
+            <p>
+                After confirming that the expressions were correct, I sought out to calculate the information matrix. I started simple, though.
+                I only considered the case of the exoplanet and no exomoon. This allowed me to break up the process into two distinct parts so any errors 
+                that arose were more traceable. After testing the exoplanet case, I found that there were a couple parameters that were causing problems, 
+                so I omitted them from future calculations. This was by no means a hasty decision as much thought went into how to proceed. I decided that 
+                getting a working information matrix with some parameters and then going back to make it work with all parameters was the best use of my time. 
+            </p>
+            <p>
+                After getting an information matrix that looked reasonable, I shifted my focus to using machine learning to verify that it was right. 
+                The method of choice was Markov Chain Monte Carlo (MCMC) because I had experience with using it for similar purposes. Treating its results 
+                as the ground truth, I used it to check if my information matrix was correct. A corner plot showing the values of the parameters and the uncertainties 
+                as calculated by MCMC is shown at the right. Suffice it say, the uncertainties calculated by my information matrix did not align with the machine learning 
+                results. 
+            </p>
+            <p>
+                This is about where I lost momentum as my temporary position 
+                as a Research Aide at UW ended and other projects began to take up my time. This project is not abandoned, but rather on hold. I look forward 
+                to sharing more as I progress.
+
+            </p>
+            <p>
+                Lastly, though not associated with this project, I wrote a short paper for my Exoplanets course about exomoon detection methods. 
+                If you are interested in learning more, feel free to download the paper below. 
+            </p>
+            
+        
+        </div>
+        <a href="ASTR_419.pdf" download="ASTR_419.pdf">
+            <button type="button">Download Exomoon PDF</button>
+        </a>
+        
+        
+    </div>
+    <div class="col-md-6">
+        <img src="LCgefera.png" alt="Your Image" class="img-fluid">
+        <img src="goodCornerPlot.png" alt="Your Image" class="img-fluid">
+    </div>
+</div>
+<p>
+
+
+</p>
+    </section>
+    <section>
+        <div class = "row">
+            <div class="col-md-6">
+        <div id="project2Details" class="project-details">
+            <h3>Imaging Globular Cluster M3</h3>
+            <p>
+                As part of an observational astronomy at the University of Washington, my final project involved remotely connecting to 
+                the Apache Point Observatory and taking images of Messier 3, a globular cluster. 
+                I worked in a group with three of my classmates and we connected to the telescope together and took turns controlling it and taking 
+                pictures. We first had to take calibration images so that we could later correct the pictures of the cluster for any instrumental noise. 
+                We then took pictures of M3 at various different exposure times. Shorter exposure times such as 5 seconds were used to better differentiate 
+                between the stars towards the center of the cluster, and longer exposure times such as 90 seconds revealed dimmer stars further from the center.
+            </p>
+            <p>
+                After taking images, I sought out to estimate the age of the cluster by making a color-magnitude diagram and identifying the turn-off 
+                point. I communicated my findings in a final paper that you can download below if you have further interest in this experience.
+            </p>
+        </div>
+        <a href="ASTR480.pdf" download="ASTR480.pdf">
+            <button type="button">Download M3 PDF</button>
+        </a>
+    </div>
+    <div class="col-md-6">
+        <img src="CorrectedM3.png" alt="Your Image" class="img-fluid">
+    </div>
+</div>
+    </section>
+    <p>
+
+
+    </p>
+    <section>
+        <div class = "row">
+            <div class="col-md-6">
+        <div id="project3Details" class="project-details">
+            <h3>Modelling the Universe</h3>
+            <p>
+                As part of a Cosmology course at the University of Washington, my final project involved using machine learning 
+                to determine the composition of a hypothetical universe. I was given data of the distance to supernovae and their 
+                redshifts. Redshift refers to the doppler effect in space. As an object in space moves away from us, 
+                the wavelength of the light emitted from the object is lengthened. This causes the object to look slightly more red, 
+                and the faster the object is moving away from us, the redder it appears.  
+            </p>
+            <p>
+                Using the Python libraries, astropy and emcee, and the popular machine learning method, Markov Chain 
+                Monte Carlo (MCMC), I found the values of Ω<sub>m</sub>, Ω<sub>Λ</sub>, and H<sub>0</sub> that described the cosmology that best fit 
+                the supernovae data. Ω<sub>m</sub> quantifies the density of non-relativistic matter in the universe. Ω<sub>Λ</sub> 
+                does the same but for dark energy. H<sub>0</sub> is the Hubble constant, or the rate at which the universe is expanding.
+            </p>
+            <p>
+                I recommend downloading the html file below to get a better understanding of this project. Looking at the outputs should 
+                give you an idea of what values and uncertainties I found. This project served as a simple application of machine learning 
+                to astronomy.
+            </p>
+            
+        </div>
+        <a href="425_project(1)(1).html" download="425_project(1)(1).html">
+            <button type="button">Download Cosmology Code HTML</button>
+        </a>
+    </div>
+    <div class="col-md-6">
+        <img src="425ProjBestFit.png" alt="Your Image" class="img-fluid">
+    </div>
+</div>
+    </section>
+    <p>
+
+
+    </p>
+    <section>
+        <div class = "row">
+            <div class="col-md-6">
+        <div id="project3Details" class="project-details">
+            <h3>Identifying Stellar Rotation</h3>
+            <p>
+                 In my first quarter at the University of Washington, I took a class intended for those planning on majoring in astronomy. This class 
+                 first covered the basics of python with astronomy applications, and then research with graduate students. One fellow student and I were 
+                 paired with Tyler Gordon (mentioned in the Exomoon Transits section) and were to help as much as we could with his research. Our goal 
+                 as assistants was to determine which data points indicated a light curve resembled stellar rotation. To accomplish this goal, we first manually 
+                 sorted and determined by-eye which light curves from the Kepler K2 mission sample were generated from stellar rotators. We then used python to explore 
+                 the relationship between different data points and the classification of stellar rotator. For example, we were particularly interested in whether an agreement 
+                 in period determined by MCMC and Gaussian Processing was indicative of stellar rotation. We evaluated the effectiveness of a particular filter 
+                 by using an receiver operating characteristic (ROC) curve which shows the false positive and true positive rates of a binary classifier. We presented 
+                 our findings in a 10 minute presentation to the University of Washington Astronomy Department.
+            </p>
+            
+        </div>
+        
+    </div>
+    <div class="col-md-6">
+        <img src="lightcurve.png" alt="Your Image" class="img-fluid">
+    </div>
+</div>
+
+    </section>
+    <p>
+
+
+    </p>
+    <section>
+        <div class = "row">
+            <div class="col-md-6">
+        <div id="project3Details" class="project-details">
+            <h3>Analyzing Advanced Hockey Statistics</h3>
+            <p>
+                As both a lifetime hockey player and enjoyer of statistics, I am fascinated by hockey statistics and how they can tell interesting stories 
+                of players' careers. As a passion project, I learned R to explore the stats behind a Boston Bruins legend, Patrice Bergeron. This project 
+                did not start with an ultimate goal in mind, but rather it served as an opportunity to pose interesting questions as I went along. Every time 
+                I found an answer, I immediately thought of ten more questions I could explore with R.
+            </p>
+            <p>
+                I first started by identifying stats that were regarded by the hockey community to be the best descriptors of success: Corsi percentage and 
+                Fenwick percentage. Corsi percentage is defined as the percentage of all shots (including those that miss the net or get blocked) that occur for 
+                one's team while the player is on the ice, while Fenwick percentage is the same except for it does not include blocked shots. I plotted the 
+                distribution of Bergeron's Corsi and Fenwick percentages and performed simple non-linear regression to fit a Gaussian to them. The distribution was 
+                clearly normal, as seen on the right.
+            </p>
+            <p>
+                I then was curious how a time series of each of those statistics looked, so I took chunks of 10 games, took the average of each stat, and then plotted 
+                sequentially. Upon first plotting these series, I thought that they looked sinusoidal. I then fit simple sine curves to them, fitting only three parameters: 
+                the amplitude, frequency, and phase shift. The fits were not even close, so I got a bit more specific. I fit increased the number of parameters to five 
+                and used the expression \(A Sin(Bx) + C + D Cos(Ex)\). After some trial and error with different bayesian inference methods, I settled on using the brms library 
+                and used its non-linear regression function, brm. The model and its uncertainty is seen on the right. A "chunk" is 10 games.
+            </p>
+            <p>
+                All in all, this project has served as a way for me to learn more about statistics and data science. This is an ongoing project as I generate more questions 
+                I wish to answer. With every question comes a plethora of googling to better understand statistical inference. The current question I am working towards 
+                answering is whether other players also experience clear peaks and valleys throughout their careers. To answer this, I must fit a similar model as I did for 
+                Bergeron and determine goodness of fit. I look forward to continuing to work on this and I think the results will tell an interesting story.
+            </p>
+        </div>
+        
+    </div>
+    <div class="col-md-6">
+        <img src="histBergeron.png" alt="Your Image" class="img-fluid">
+        <img src="bergeronFit.png" alt="Your Image" class="img-fluid">
+    </div>
+</div>
+
+    </section>
+        
+        
+        
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              // Your initialization code here
+              var skillsAccordion = new bootstrap.Accordion(document.getElementById('skillsAccordion'));
+            });
+          </script>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+                var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                    var popover = new bootstrap.Popover(popoverTriggerEl);
+                    // Close popover when clicking anywhere else on the document
+                    document.addEventListener('click', function (e) {
+                        if (!popoverTriggerEl.contains(e.target)) {
+                            popover.hide();
+                        }
+                    });
+                    return popover;
+                });
+            });
+        </script>  
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    /* Custom styling for the PaCo brand */
+    .paco-brand {
+        font-size: 48px; 
+        color:firebrick;
+        font-family: 'Comic Sans MS', cursive;
+    }
+    body {
+    font-family: 'Arial', sans-serif;
+    background: url('stars.jpg') center/cover; /* Set the starry background */
+    color: #fff; /* Set text color to white */
+    margin: 0; /* Remove default margin */
+    padding: 75; /* Remove default padding */
+}
+    .navbar-nav {
+            color: white;
+        }
+        .navbar-nav .nav-link {
+        position: relative;
+        }
+    .navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Adjust the distance of the bubble from the text */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px; /* Adjust the width of the bubble */
+    height: 30px; /* Adjust the height of the bubble */
+    background-color: transparent; /* Initial background color (transparent) */
+    border-radius: 50%;
+    z-index: -1;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+        /* Style for the active navigation link */
+        .nav-item.active a {
+            border-radius: 15px; /* Adjust the border-radius as needed */
+            background-color: rgb(109, 35, 109);
+            color: white !important; /* Override Bootstrap's default link color */
+            padding: 5px 10px; /* Adjust padding as needed */
+        }
+        .navbar-nav .nav-link:hover {
+            position: relative;
+            color: white; /* Change the text color on hover if needed */
+        }
+    .about-me-text {
+        font-size: 20px;
+
+    }
+
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand paco-brand" >PRC</a>
+            <div class="nav justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link"  href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" aria-current="page" href="biography.html">About Me</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="resume.html">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  href="portfolio.html">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.linkedin.com/in/patrick-costa-323842195/">LinkedIn</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+      <section id="about-me" class="container-fluid mt-5 active">
+        <div class="row">
+            <!-- Left column for the title and picture -->
+            <div class="col-md-6">
+                
+                <!-- Add your image here -->
+                <img src="me.jpg" alt="Your Image" class="img-fluid">
+            </div>
+            <!-- Right column for the paragraph about you -->
+            <div class="col-md-6">
+                <div class="about-me-text">
+                <p>
+                    <!-- Add your paragraph here -->
+                    Hi, I'm Patrick, but you can call me Pat. I grew up in North Kingstown, Rhode Island where I spent most of my free time playing sports
+                    such as ice hockey and flag football. I attended public school for most of my academic career until my Sophomore year of high school
+                    when I attended La Salle Academy in Providence, Rhode Island for the remainder of high school. At La Salle, I excelled academically,
+                    consistently performing exceptionally in the most difficult of classes as well as making significant contributions to the robotics and
+                    math teams. 
+                </p>
+                <p>
+                    I chose to continue my studies at the University of Washington where I graduated with a 3.52 GPA dual-majoring in Physics and Astronomy 
+                    while being the goalie for the hockey team. The rigorous curriculum covered a wide range of topics including 
+                    quantum mechanics, cosmology, and astrostatistics, preparing me for the next step of my academic career: Florida Tech. 
+                </p>
+                <p>
+                    I am currently 
+                    enrolled in a M.S. program in Space Systems at the Florida Institute of Technology. This program is preparing me for a career in the 
+                    space industry as I learn to plan, design, build, integrate, test launch, operate and manage all forms of space systems, 
+                    subsystems, launch vehicles, spacecraft, payload, and ground systems. I believe that humanity's long-term survival relies on us being 
+                    a multi-planetary species, and I want to be a part of turning that into a tangible reality.
+                
+                </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
